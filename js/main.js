@@ -309,6 +309,17 @@ window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // 모바일에서 UI가 겹치지 않도록 카메라 위치 조정
+    if (window.innerWidth <= 768) {
+        // 모바일 화면일 때 카메라와 컨트롤 타겟을 위로 올려 간판 전체가 보이도록 함
+        camera.position.y = 15;
+        controls.target.y = 8;
+    } else {
+        // 데스크탑 화면일 때 원래 위치로 되돌림
+        camera.position.y = 5;
+        controls.target.y = 3;
+    }
 });
 
 // =====================
