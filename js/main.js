@@ -62,7 +62,7 @@ let textMeshes = [];
 
 // 폰트 파일 로드
 fontLoader.load(
-    '../assets/fonts/noto_sans_kr_regular.json',
+    './assets/fonts/noto_sans_kr_regular.json',
     (font) => {
         loadedFont = font;
         console.log('Font loaded!');
@@ -74,7 +74,7 @@ fontLoader.load(
 
 // 로고 GLB 모델 로드
 gltfLoader.load(
-    '../assets/signboard.glb',
+    './assets/signboard.glb',
     (gltf) => {
         logoMesh = gltf.scene;
         // 로고 위치는 updateSignboard에서 설정
