@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>3D 간판 시안 제작</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="container">
+        <canvas id="signboard-canvas"></canvas>
+        <div id="ui-panel">
+            <h2>간판 설정</h2>
+            <div class="input-group">
+                <label for="sign-width">간판 너비:</label>
+                <input type="number" id="sign-width" value="30" step="0.1" min="1">
+            </div>
+            <div class="input-group">
+                <label for="sign-height">간판 높이:</label>
+                <input type="number" id="sign-height" value="15" step="0.1" min="1">
+            </div>
+            <div class="input-group">
+                <label for="sign-color">간판 색상:</label>
+                <div class="color-picker-container">
+                    <input type="color" id="sign-color" value="#ffffff">
+                    <input type="text" id="sign-color-hex" class="color-hex-input" value="#ffffff">
+                </div>
+            </div>
+
+            <h3>간판 문구</h3>
+            <div id="text-inputs">
+                <div class="text-line-setting">
+                    <div class="input-group">
+                        <label for="text-line-1">줄 1:</label>
+                        <input type="text" id="text-line-1" value="WELCOME" class="text-input">
+                    </div>
+                    <div class="input-group">
+                        <label for="font-line-1">폰트:</label>
+                        <select id="font-line-1" class="font-select">
+                            <option value="noto_sans_kr_regular">노토산스</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="color-line-1">색상:</label>
+                        <div class="color-picker-container">
+                            <input type="color" id="color-line-1" value="#000000">
+                            <input type="text" id="color-line-1-hex" class="color-hex-input" value="#000000">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="size-line-1">크기:</label>
+                        <input type="number" id="size-line-1" value="1" step="0.1" min="0.1">
+                    </div>
+                </div>
+            </div>
+            
+            <button id="add-text-line">줄 추가</button>
+            <hr>
+            <button id="export-stl">STL로 다운로드</button>
+        </div>
+    </div>
+    
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

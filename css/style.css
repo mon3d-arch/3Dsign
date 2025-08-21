@@ -1,0 +1,182 @@
+/*
+ * body, html
+ * 기본 스타일 및 3D 캔버스 컨테이너 설정
+ */
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+#container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#signboard-canvas {
+    display: block;
+}
+
+/*
+ * UI 패널 스타일
+ */
+#ui-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    z-index: 10;
+}
+
+#ui-panel h2, #ui-panel h3 {
+    margin-top: 0;
+    color: #1a1a1a;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+/*
+ * 입력 그룹 (라벨 + 입력 요소) 스타일
+ */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+/*
+ * 모든 텍스트, 숫자, 선택 입력 요소 스타일
+ */
+.input-group input[type="text"],
+.input-group input[type="number"],
+.input-group select {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+/*
+ * 색상 선택 입력 요소 스타일
+ */
+.input-group input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    background: none;
+    cursor: pointer;
+}
+
+.input-group input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.input-group input[type="color"]::-webkit-color-swatch {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.color-picker-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-hex-input {
+    flex-grow: 1;
+    font-family: monospace;
+    text-transform: uppercase;
+    width: auto !important; /* 부모 요소의 너비를 따르도록 재설정 */
+}
+
+/*
+ * 버튼 스타일
+ */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/*
+ * 텍스트 줄별 설정 구역 스타일
+ */
+.text-line-setting {
+    border: 1px dashed #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fefefe;
+}
+
+/*
+ * 스크롤바 스타일 (선택 사항, 웹킷 기반 브라우저)
+ */
+#ui-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+#ui-panel::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/*
+ * 모바일 최적화를 위한 미디어 쿼리
+ */
+@media (max-width: 768px) {
+    #ui-panel {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 50vh;
+        border-radius: 12px 12px 0 0;
+        padding: 15px;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="number"],
+    .input-group select {
+        width: 100%;
+    }
+}
