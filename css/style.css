@@ -167,7 +167,7 @@ button:active {
         left: 0;
         right: 0;
         width: 100%;
-        max-height: 50vh; /* 화면의 절반 높이로 제한 */
+        max-height: 30vh; /* 화면의 절반 높이로 제한 */
         border-radius: 12px 12px 0 0; /* 상단 모서리만 둥글게 */
         padding: 15px;
         box-sizing: border-box; /* 패딩이 너비에 포함되도록 */

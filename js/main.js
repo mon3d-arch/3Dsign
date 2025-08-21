@@ -334,13 +334,28 @@ const offset = new Vector3();
 
 const canvas = document.getElementById('signboard-canvas');
 
+// 기존 마우스 이벤트 리스너
 canvas.addEventListener('mousedown', onMouseDown, false);
 canvas.addEventListener('mousemove', onMouseMove, false);
 canvas.addEventListener('mouseup', onMouseUp, false);
 
+// 터치 이벤트 리스너 추가
+canvas.addEventListener('touchstart', onTouchStart, false);
+canvas.addEventListener('touchmove', onTouchMove, false);
+canvas.addEventListener('touchend', onTouchEnd, false);
+
+function getEventPoint(event) {
+    // 터치 이벤트와 마우스 이벤트 모두 처리
+    const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+    const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+    return { clientX, clientY };
+}
+
 function onMouseDown(event) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    const { clientX, clientY } = getEventPoint(event);
+    
+    mouse.x = (clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(clientY / window.innerHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
 
@@ -391,8 +406,10 @@ function onMouseMove(event) {
 
     event.preventDefault();
 
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    const { clientX, clientY } = getEventPoint(event);
+
+    mouse.x = (clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(clientY / window.innerHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
 
@@ -406,4 +423,20 @@ function onMouseUp(event) {
     isDragging = false;
     draggableObject = null;
     controls.enabled = true;
+}
+
+// 터치 이벤트 핸들러
+function onTouchStart(event) {
+    // 터치 이벤트를 마우스 다운 이벤트처럼 처리
+    onMouseDown(event);
+}
+
+function onTouchMove(event) {
+    // 터치 이동 이벤트를 마우스 이동 이벤트처럼 처리
+    onMouseMove(event);
+}
+
+function onTouchEnd(event) {
+    // 터치 종료 이벤트를 마우스 업 이벤트처럼 처리
+    onMouseUp(event);
 }
